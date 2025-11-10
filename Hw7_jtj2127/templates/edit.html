@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="add-park-container">
+    <h2 class="text-center">Edit National Park</h2>
+
+    <!-- Confirmation Message -->
+    <div id="successMessage" style="display:none;" class="text-center mt-4">
+        <!-- Success message will be dynamically inserted here by JS -->
+    </div>
+
+    <form id="editParkForm" method="POST" action="{{ url_for('edit', id=park.id) }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Park Name:</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ park.name }}" required>
+            <div class="error-message text-danger"></div> <!-- Error message container -->
+        </div>
+
+        <div class="mb-3">
+            <label for="year_established" class="form-label">Year Established:</label>
+            <input type="text" id="year_established" name="year_established" class="form-control" value="{{ park.year_established }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" required>{{ park.description }}</textarea>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL:</label>
+            <input type="text" id="image" name="image" class="form-control" value="{{ park.image }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location_states" class="form-label">States:</label>
+            <input type="text" id="location_states" name="location_states" class="form-control"
+                   value="{{ ', '.join(park.location_states) if is_location_states_list else park.location_states }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="scenic_landmarks" class="form-label">Scenic Landmarks:</label>
+            <input type="text" id="scenic_landmarks" name="scenic_landmarks" class="form-control"
+                   value="{{ ', '.join(park.scenic_landmarks) if is_scenic_landmarks_list else park.scenic_landmarks }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="trail_difficulty" class="form-label">Trail Difficulty:</label>
+            <input type="text" id="trail_difficulty" name="trail_difficulty" class="form-control"
+                   value="{{ ', '.join(park.trail_difficulty) if is_trail_difficulty_list else park.trail_difficulty }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="entrance_fee" class="form-label">Entrance Fee:</label>
+            <input type="text" id="entrance_fee" name="entrance_fee" class="form-control" value="{{ park.entrance_fee }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="visitor_rating" class="form-label">Visitor Rating:</label>
+            <input type="text" id="visitor_rating" name="visitor_rating" class="form-control" value="{{ park.visitor_rating }}" required>
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="popular_activities" class="form-label">Popular Activities (comma-separated):</label>
+            <input type="text" id="activities" name="activities" class="form-control"
+                   value="{{ ', '.join(park.popular_activities) if is_popular_activities_list else park.popular_activities }}" required placeholder="e.g., Hiking, Camping, Fishing">
+            <div class="error-message text-danger"></div>
+        </div>
+
+        <div class="d-flex justify-content-start">
+            <!-- Update Park Button -->
+            <button type="submit" class="btn btn-primary me-2">Update Park</button>
+
+            <!-- Discard Changes Button -->
+            <button type="button" id="discardChangesBtn" class="btn btn-secondary">Discard Changes</button>
+        </div>
+    </form>    
+</div>
+
+<script src="{{ url_for('static', filename='add.js') }}"></script>
+
+<script>
+    document.getElementById('discardChangesBtn').addEventListener('click', function() {
+        // Display a confirmation dialog before discarding changes
+        if (confirm('Are you sure you want to discard your changes?')) {
+            // If confirmed, redirect to the view page without saving changes
+            window.location.href = "{{ url_for('view', id=park.id) }}";
+        } else {
+            // If cancelled, stay on the edit page
+            return;
+        }
+    });
+</script>
+
+{% endblock %}

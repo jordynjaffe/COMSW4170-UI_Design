@@ -1,0 +1,285 @@
+
+.park-item h2 {
+    font-size: 25px; 
+    font-weight: normal; 
+    text-align: left;
+    margin: 20px 0; 
+}
+
+body {
+    background-color: #EBEBEB; 
+}
+
+.body-view {
+    background-color: #98d2ebb5;
+    height: 640px;
+    width: 100%
+}
+
+/* Navbar customization */
+.navbar {
+    background-color: white !important; /* White background */
+}
+
+.navbar-brand {
+    color: #7F6762 !important; /* Brown color for the brand text */
+    font-weight: bold; /* Bold font for the brand text */
+}
+
+.nav-link {
+    color: #7F6762 !important;
+}
+
+.navbar .btn-light {
+    background-color: #7F6762; /* Light background for the button */
+    color: white; /* Brown color for the search button text */
+}
+
+.navbar .form-control {
+    border-color: #7F6762; /* Brown border for the search input field */
+}
+
+/* Optional: change the hover state for the button */
+.navbar .btn-light:hover {
+    background-color: #5c4a46;
+    
+}
+
+
+.btn-primary {
+    background-color: #7F6762;
+    border-color: #7F6762;
+}
+
+.btn-primary:hover {
+    background-color: #5c4a46;
+    border-color: #5c4a46;
+}
+
+/* Ensure the container for the cards is centered on the page */
+#parks-container {
+    display: flex;
+    flex-wrap: wrap;   /* Allow cards to wrap to the next line */
+    justify-content: center; /* Center cards horizontally */
+    align-items: center; /* Center cards vertically */
+    margin-top: 30px;  /* Adjust top margin to give some spacing */
+}
+
+
+.jumbotron-blue-text {
+    background-color: #98D2EB;
+    color: #525252;
+    padding: 40px;
+    height: 40vh;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.jumbo-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers text horizontally */
+    text-align: center; /* Ensures text itself is centered */
+    padding-right: 40px;
+    height: 100%; /* Ensures full height for flexbox alignment */
+}
+
+
+.jumbo-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #7F6762;
+}
+
+.jumbo-content p {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.jumbo-image {
+    flex: 1;
+    height: 100%;
+    max-width: 50%;
+    object-fit: cover;
+}
+
+.card {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    color: #7F6762;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    color: #98D2EB;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.card-img-top {
+    width: 380px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensures the image fills the container while maintaining aspect ratio */
+    display: block; /* Ensures the image behaves properly inside the flex container */
+    margin: 0 auto; /* Centers the image horizontally */
+}
+
+.card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+mark {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+
+/* Add Park Page Styles */
+.add-park-container {
+    background-color: #98D2EB;
+    color: #525252;
+    padding: 40px;
+    margin: 20px auto;
+    width: 80%; /* Adjust width of the container */
+    max-width: 800px; /* Limit maximum width */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+.add-park-container h2 {
+    font-size: 2rem;
+    color: #7F6762;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.add-park-container label {
+    font-size: 1.2rem;
+    color: #525252;
+    margin-bottom: 5px;
+}
+
+.add-park-container input,
+
+.add-park-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.add-park-container textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.add-park-container button {
+    background-color: #7F6762;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-park-container button:hover {
+    background-color: #5c4a46;
+}
+
+.add-park-container input:focus,
+.add-park-container textarea:focus {
+    outline: none;
+    border-color: #5c4a46;
+}
+
+.add-park-container .form-group {
+    margin-bottom: 20px;
+}
+
+.custom-btn {
+    font-weight: bold;
+    width: 200px;
+    color: white;
+    background-color: #7F6762;
+    border: 2px solid red; /* Ensures a consistent border */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px; /* Adjusts spacing */
+    line-height: 1.5; /* Ensures text alignment */
+}
+
+/* View Page Custom Styles */
+
+.info-section {
+    margin-top: 50px;
+    color: #525252;
+}
+.info-section {
+    margin-bottom: 12px; /* Controls spacing between each line */
+  }
+
+.bold-text {
+    font-weight: bold;
+}
+
+.inline-links a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.inline-links a:hover {
+    text-decoration: underline;
+}
+
+.info-group {
+    margin-top: 40px;
+    margin-left: 60px;
+    font-size: 18px;
+    color: #525252;
+}
+
+.inline-text {
+    display: inline; /* Make all text inline */
+    margin-right: 5px; /* Adjust spacing between the label and the list */
+}
+
+
+.inline-links {
+    display: inline; /* Make links inline with the label */
+}
+
+.bold-text {
+    font-weight: bold; /* Keep the label bold */
+}
+
+
+

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results - National Parks
+{% endblock %}
+
+{% block content %}
+    <div id="search-results-header">
+        <h1>Search Results for "{{ query }}":</h1>
+    </div>
+    
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if results %}
+        <ul>
+            {% for park in results %}
+            <li style="padding-bottom: 70px;">
+                    <a href="{{ url_for('view', id=park['id']) }}" style="color:blue;">
+                        <span>{{ park['highlighted_name']|safe }}</span>
+                    </a>
+                    
+                    <div style="margin-left: 20px;">
+                        <p><strong>Description:</strong> 
+                            {{ park['highlighted_description']|safe }}
+                        </p>
+                        
+                        {% if park['highlighted_activities'] %}
+                            <p><strong>Activities:</strong></p>
+                            <ul>
+                                {% for activity in park['highlighted_activities'] %}
+                                    <li>{{ activity|safe }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        
+                        {% if park['highlighted_location_states'] %}
+                            <p><strong>Location:</strong></p>
+                            <ul>
+                                {% for state in park['highlighted_location_states'] %}
+                                    <li>{{ state|safe }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p></p>
+    {% endif %}
+{% endblock %}

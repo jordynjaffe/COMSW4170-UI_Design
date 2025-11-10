@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage - National Parks
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-blue-text">
+    <div class="jumbo-content">
+        <h1>Explore National Parks</h1>
+        <p> Explore popular national parks around the U.S. with a range of activites, entrance fees, and attractions. <br> Your next adventure awaits!</p>
+    </div>
+    <img src="https://www.nationalparks.org/uploads/_1200x630_crop_center-center_82_none/yosemitenp_kyle_yates_istock.jpg?mtime=1655840352" 
+         alt="National Parks Image" class="jumbo-image">
+</div>
+
+
+
+    <div class="container mt-4">
+        <h2 class="text-center" style ="color: #525252;">Popular National Parks:</h2>
+        <div class="row" id="parks-container">
+            <!-- JavaScript will insert cards here -->
+        </div>
+    </div>
+
+    <script>
+        var parks = {{ parks | tojson }};
+    </script>
+    
+    <script src="{{ url_for('static', filename='homepage.js') }}"></script> 
+{% endblock %}

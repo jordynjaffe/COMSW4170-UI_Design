@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="add-park-container">
+    <h2 class="text-center">Add a New National Park</h2>
+
+    <!-- Confirmation Message -->
+    <div id="successMessage" style="display:none;" class="text-center mt-4">
+        <!-- Success message will be dynamically inserted here by JS -->
+    </div>
+
+    <form id="addParkForm" method="POST" action="/add">
+        <div class="mb-3">
+            <label for="name" class="form-label">Park Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+            <div class="error-message text-danger"></div> <!-- Error message container -->
+        </div>
+    
+        <div class="mb-3">
+            <label for="year_established" class="form-label">Year Established:</label>
+            <input type="text" id="year_established" name="year_established" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL:</label>
+            <input type="text" id="image" name="image" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="location_states" class="form-label">States:</label>
+            <input type="text" id="location_states" name="location_states" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="scenic_landmarks" class="form-label">Scenic Landmarks:</label>
+            <input type="text" id="scenic_landmarks" name="scenic_landmarks" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="trail_difficulty" class="form-label">Trail Difficulty:</label>
+            <input type="text" id="trail_difficulty" name="trail_difficulty" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="entrance_fee" class="form-label">Entrance Fee:</label>
+            <input type="text" id="entrance_fee" name="entrance_fee" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="visitor_rating" class="form-label">Visitor Rating:</label>
+            <input type="text" id="visitor_rating" name="visitor_rating" class="form-control" required>
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="popular_activities" class="form-label">Popular Activities (comma-separated):</label>
+            <input type="text" id="popular_activities" name="popular_activities" class="form-control" required placeholder="e.g., Hiking, Camping, Fishing">
+            <div class="error-message text-danger"></div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Add Park</button>
+    </form>    
+</div>
+
+<script src="{{ url_for('static', filename='add.js') }}"></script>
+{% endblock %}
