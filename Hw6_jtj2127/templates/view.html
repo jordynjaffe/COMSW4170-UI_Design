@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ park.name }}</title>
+</head>
+<body>
+    <h1>{{ park.name }}</h1>
+    <img src="{{ park.image }}" alt="{{ park.name }}" style="max-width: 40%; height: auto;">
+
+    <p><strong>Year Established:</strong> {{ park.year_established }}</p>
+    <p><strong>Entrance Fee:</strong> ${{ park.entrance_fee }}</p>
+    <p><strong>Visitor Rating:</strong> {{ park.visitor_rating }} / 5</p>
+    <p><strong>Description:</strong> {{ park.description }}</p>
+
+    <p><strong>Location (States):</strong>
+    <ul>
+        {% for state in park.location_states %}
+            <li>{{ state }}</li>
+        {% endfor %}
+    </ul></p>
+    <br>
+
+    <p><strong>Scenic Landmarks:</strong>
+    <ul>
+        {% for landmark in park.scenic_landmarks %}
+            <li>{{ landmark }}</li>
+        {% endfor %}
+    </ul></p>
+    <br>
+
+
+    <p><strong>Trail Difficulties:</strong>
+    <ul>
+        {% for difficulty in park.trail_difficulty %}
+            <li>{{ difficulty }}</li>
+        {% endfor %}
+    </ul></p>
+    <br>
+
+
+    <p><strong>Trail Difficulties:</strong>
+    <ul>
+        {% for activity in park.popular_activities %}
+            <li>{{ activity }}</li>
+        {% endfor %}
+    </ul></p>
+</body>
+
+{% endblock %}

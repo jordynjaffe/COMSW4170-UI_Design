@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage - National Parks
+{% endblock %}
+
+{% block content %}
+    <!-- Header for Popular Parks -->
+    <div id="popular-parks-header">
+        <h1>Popular National Parks:</h1>
+    </div>
+
+    <script>
+      // Pass the parks data from Flask to JS
+        var parks = {{ parks | tojson }};  
+    </script>
+    
+    <script src="{{ url_for('static', filename='homepage.js') }}"></script> 
+    
+    
+    <div id="parks-container"></div> 
+{% endblock %}
