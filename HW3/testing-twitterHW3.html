@@ -1,0 +1,140 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <script>
+        $(document).ready(function() {
+            const max_text = 30;
+            const username = "@jordynjaffe";
+
+            const $tweetInput = $('#tweet-text');
+            const $charCounter = $('#char-count');
+            const $postBtn = $('#post-btn');
+            const $postContainer = $('#post-container');
+
+            function updateCharCount() {
+                let text = $tweetInput.val();
+                let remaining = max_text - text.length;
+                $charCounter.text(remaining);
+
+                // Update character count color
+                if (remaining < 0) {
+                    $charCounter.css("color", "red");
+                    $postBtn.prop('disabled', true);
+                } else {
+                    $charCounter.css("color", "lightgrey");
+                    $postBtn.prop('disabled', text.length === 0);
+                }
+            }
+
+            // Initialize counter correctly on page load
+            updateCharCount();
+
+            // Prevent newlines in the textarea
+            $tweetInput.on("keypress", function(event) {
+                if (event.which === 13) { // Enter key
+                    event.preventDefault();
+                    let text = $tweetInput.val();
+
+                    // Prevent newline if input is empty or over limit
+                    if (text.length > 0 && text.length <= max_text) {
+                        $postBtn.click(); // Post tweet if valid
+                    }
+                }
+            });
+
+            // Listen for user input and update counter
+            $tweetInput.on('input', function(event) {
+                updateCharCount();
+            });
+
+            // Post tweet when clicking the button
+            $postBtn.click(function() {
+                let tweetText = $tweetInput.val();
+                if (tweetText.length === 0 || tweetText.length > max_text) return; // Prevent empty or over-limit tweets
+
+                // Add new tweet to the top (Preserve whitespace using <pre>)
+                $postContainer.prepend(`
+                    <div class="post">
+                        <strong>${username}</strong>: <pre>${tweetText}</pre>
+                    </div>
+                `);
+
+                // Reset input field and character counter
+                $tweetInput.val('');
+                updateCharCount();
+                
+                // Focus back to the tweet input
+                setTimeout(function() {
+                    $tweetInput.focus();
+                }, 0);
+            });
+
+            // Focus the input field when the page loads
+            $tweetInput.focus();
+        });
+    </script>
+
+    <style>
+        body {
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        .tweet_container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        textarea {
+            width: 50%;
+            height: auto;
+            resize: none;
+            overflow: hidden;
+            line-height: 1.5;
+            padding: 5px;
+            font-size: 16px;
+            white-space: pre-wrap; /* Ensures spaces and line breaks are preserved */
+        }
+
+        pre {
+            display: inline; /* Keeps the text inline while preserving spaces */
+            white-space: pre-wrap;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        #char-count {
+            margin-top: -5px;
+            color: lightgrey; /* Default grey color */
+            font-weight: normal;
+        }
+
+        #post-btn {
+            margin-bottom: 20px;
+        }
+
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Write a tweet:</h2>
+    <div class="tweet_container">
+        <textarea id="tweet-text" rows="1"></textarea>
+        <button id="post-btn" class="btn btn-primary" disabled>Post Tweet</button>
+    </div>
+    <div id="char-count">30</div>
+    
+    <h3>POSTS</h3>
+    <div id="post-container"></div>
+</body>
+</html>
